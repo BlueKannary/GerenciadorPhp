@@ -1,0 +1,252 @@
+/* Estilos globais */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f5f7fa;
+    margin: 0;
+    padding: 0;
+}
+h1, h2, h3 {
+    color: #2c3e50;
+}
+h1 {
+    font-size: 28px;
+    margin-bottom: 20px;
+}
+h2 {
+    font-size: 24px;
+    margin-bottom: 15px;
+}
+h3 {
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+p {
+    font-size: 16px;
+    line-height: 1.5;
+    color: #34495e;
+}
+a {
+    text-decoration: none;
+}
+
+.m-2 {
+    margin: 2px;
+}
+.m-4 {
+    margin: 4px;
+}
+.m-8 {
+    margin: 8px;
+}
+
+.pull-left {
+    margin-left: 0;
+}
+
+.pull-right {
+    margin-right: 0px;
+}
+
+/* Sistema de grid flexível de 12 colunas */
+.row {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+[class^="col-"] {
+    padding: 10px;
+    box-sizing: border-box;
+}
+
+/* Definição de largura para col-1 até col-12 */
+.col-1  { flex: 0 0 8.33%;  max-width: 8.33%; }
+.col-2  { flex: 0 0 16.66%; max-width: 16.66%; }
+.col-3  { flex: 0 0 25%;    max-width: 25%; }
+.col-4  { flex: 0 0 33.33%; max-width: 33.33%; }
+.col-5  { flex: 0 0 41.66%; max-width: 41.66%; }
+.col-6  { flex: 0 0 50%;    max-width: 50%; }
+.col-7  { flex: 0 0 58.33%; max-width: 58.33%; }
+.col-8  { flex: 0 0 66.66%; max-width: 66.66%; }
+.col-9  { flex: 0 0 75%;    max-width: 75%; }
+.col-10 { flex: 0 0 83.33%; max-width: 83.33%; }
+.col-11 { flex: 0 0 91.66%; max-width: 91.66%; }
+.col-12 { flex: 0 0 100%;   max-width: 100%; }
+
+
+
+
+/* Estilo do cabeçalho */
+header {
+    background-color: #2c3e50;
+    color: white;
+    padding: 20px;
+    text-align: center;
+}
+header h1 {
+    margin: 0;
+    font-size: 36px;
+}
+/* Estilo do rodapé */
+footer {
+    background-color: #2c3e50;
+    color: white;
+    text-align: center;
+    padding: 10px;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
+footer p {
+    margin: 0;
+    font-size: 14px;
+}
+
+/* Estilo do menu */
+nav {
+    background-color: #34495e;
+    color: white;
+    padding: 10px;
+}
+nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+nav ul li {
+    display: inline;
+    margin-right: 20px;
+}
+nav ul li a {
+    color: white;
+    text-decoration: none;
+}
+nav ul li a:hover {
+    text-decoration: underline;
+}
+
+/* Container do cabeçalho */
+.containerHeader {
+    background-color: #344f6b;
+    color: rgba(255, 255, 255, 0.858);
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* Container geral */
+.container {
+    background-color: #aaacae;
+    max-width: 800px;
+    margin: 30px auto;    
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: rgb(208, 208, 208);
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+/* Formulário */
+.form {
+    display: flex;
+    flex-direction: column;
+}
+
+/* Container de tarefas */
+.containerTarefa {
+    background-color: #478898;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+/* Container de tarefas */
+.containerTarefa h1 {
+    margin: 0;
+    font-size: 22px;
+    color: #464984;
+}
+
+.containerTarefa .tarefa {
+    background-color: #bdc3c7;
+    padding: 10px;
+    border-radius: 4px;
+    margin-bottom: 10px;
+}
+
+.containerTarefa .tarefa p {
+    margin: 5px 0;
+    font-size: 14px;
+    color: #2c3e50;
+}
+
+/* Inputs e selects */
+input[type="text"],
+input[type="date"],
+input[type="number"],
+input[type="email"],
+input[type="password"],
+select,
+textarea {
+    width: 100%;
+    padding: 8px 10px;
+    margin-top: 5px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+textarea {
+    resize: vertical;
+}
+
+/* Estilo dos botões */
+.btn {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+}
+.btn-error {
+    background-color: #e74c3c;
+    color: white;
+}
+.btn-error :hover {
+    background-color: #c0392b;
+}
+
+.btn-primary {
+    background-color: #3498db;
+    color: white;
+    font-weight: bold;
+}
+
+.btn-primary:hover {
+    background-color: #2980b9;
+}
+
+.btn-secundary {
+    background-color: #95a5a6;
+    color: white;
+    font-weight: bold;
+}
+.btn-secundary:hover {
+    background-color: #3c4243;
+}
+.btn-sucess {
+    background-color: #69a66f;
+    color: white;
+    font-weight: bold;
+}
+.btn-sucess:hover {
+    background-color: #2a5334;
+}
+
+/* Texto informativo */
+.text-info {
+    font-size: 11px;
+    color: #2b5adc;
+    margin-bottom: 10px;
+}
