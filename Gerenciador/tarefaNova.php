@@ -1,22 +1,39 @@
 <?php
+session_start();
 include 'Comuns/header.php';
-include 'Comuns/autentica.php';
 
-// Verifica se o usuário está autenticado
 if (!isset($_SESSION['usuario_id'])) {
     header('Location: login.php');
     exit;
 }
 
-// Envio do formulário e retorno à página de dashboard 
+// Salva nova tarefa no cookie
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    // Adicionar a lógica para salvar a nova tarefa no banco de dados
+    $tarefas = isset($_COOKIE['tarefas']) ? json_decode($_COOKIE['tarefas'], true) : [];
+
+    $nova_tarefa = [
+        'id' => uniqid(),
+        'titulo' => $_POST['titulo'],
+        'responsavel' => $_POST['responsavel'],
+        'descricao' => $_POST['descricao'],
+        'urgente' => $_POST['urgente'] ?? 'nao',
+        'data' => $_POST['data'],
+        'status' => $_POST['status'],
+        'prioridade' => $_POST['prioridade'],
+        'categoria' => $_POST['categoria'],
+        'usuario_id' => $_SESSION['usuario_id'] // mesmo nome usado no login
+    ];
+
+    $tarefas[] = $nova_tarefa;
+
+    setcookie('tarefas', json_encode($tarefas), time(), '/');
+
     header('Location: dashboard.php');
     exit;
 }
 ?>
-<main>
 
+<main>
     <div class="containerHeader">
         <div class="pull-left">
             <h1>Tarefa</h1>
@@ -27,19 +44,21 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         </div>
     </div>
     <div class="container">
-
         <h2>Criar Nova Tarefa</h2>
 
         <div class="containerTarefa">
             <form action="tarefaNova.php" method="POST">
                 <div class="row">
-                    <div class="col-12">
+                    <div class="col-6">
                         <label for="titulo">Título:</label>
                         <input type="text" id="titulo" name="titulo" required>
-                        <label for="data_limite">Data Limite:</label>
-                        <input type="date" id="data_limite" name="data_limite" required>
+                    </div>
+                    <div class="col-6">
+                        <label for="responsavel">Responsável:</label>
+                        <input type="text" id="responsavel" name="responsavel" required>
                     </div>
                 </div>
+
                 <div class="row">
                     <div class="col-12">
                         <label for="descricao">Descrição:</label>
@@ -48,11 +67,15 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 </div>
                 <div class="row">
                     <div class="col-3">
-                        <label for="urgente">Urgente:</label><br />
+                        <label>Urgente:</label><br />
                         <input type="radio" id="sim" name="urgente" value="sim">
                         <label for="sim">Sim</label><br />
-                        <input type="radio" id="nao" name="urgente" value="nao">
+                        <input type="radio" id="nao" name="urgente" value="nao" checked>
                         <label for="nao">Não</label><br />
+                    </div>
+                    <div class="col-3">
+                        <label for="data">Data:</label>
+                        <input type="date" id="data" name="data" required>
                     </div>
                 </div>
                 <div class="row">
@@ -83,13 +106,14 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                     </div>
                 </div>
                 <div class="row">
-                    <div class="text-info ft-11">* Campos de preenchimento obrigatorio</div>
+                    <div class="text-info ft-11">* Campos de preenchimento obrigatório</div>
                     <button type="submit" class="btn btn-primary">Criar</button>
                 </div>
             </form>
         </div>
     </div>
 </main>
+
 <?php
 include 'Comuns/footer.php';
 ?>
