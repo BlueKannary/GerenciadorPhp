@@ -7,6 +7,9 @@ if (!isset($_SESSION['usuario_id'])) {
     exit;
 }
 
+// Carrega usuários do cookie
+$usuarios = isset($_COOKIE['usuarios']) ? json_decode($_COOKIE['usuarios'], true) : [];
+
 // Salva nova tarefa no cookie
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $tarefas = isset($_COOKIE['tarefas']) ? json_decode($_COOKIE['tarefas'], true) : [];
@@ -26,7 +29,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     $tarefas[] = $nova_tarefa;
 
-    setcookie('tarefas', json_encode($tarefas), time(), '/');
+    setcookie('tarefas', json_encode($tarefas), time() + 60 * 60 * 24, '/');
 
     header('Location: dashboard.php');
     exit;
@@ -53,7 +56,14 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                     </div>
                     <div class="col-6">
                         <label for="responsavel">Responsável:</label>
-                        <input type="text" id="responsavel" name="responsavel" required>
+                        <select id="responsavel" name="responsavel" required>
+                            <option value="" disabled selected>Selecione</option>
+                            <?php foreach ($usuarios as $usuario): ?>
+                                <option value="<?= htmlspecialchars($usuario['nome']) ?>">
+                                    <?= htmlspecialchars($usuario['nome']) ?>
+                                </option>
+                            <?php endforeach; ?>
+                        </select>
                     </div>
                 </div>
                 <div class="row">
@@ -111,6 +121,4 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     </div>
 </main>
 
-<?php
-include 'Comuns/footer.php';
-?>
+<?php include 'Comuns/footer.php'; ?>

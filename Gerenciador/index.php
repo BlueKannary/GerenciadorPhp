@@ -8,7 +8,7 @@ echo "<main>";
 require_once (match($page) {
     "home" => "./dashboard.php",
     "login" => "./login.php",
-    "tarefas" => "./tarefas.php",
+    "tarefas" => "./tarefa.php",
     default => "./404.php",
 });
 

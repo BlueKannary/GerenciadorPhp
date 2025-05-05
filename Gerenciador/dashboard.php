@@ -1,5 +1,6 @@
 <?php
 // dashboard.php
+session_start();
 require_once 'Comuns/header.php';
 require_once 'Comuns/autentica.php';
 
@@ -14,8 +15,17 @@ require_once 'Banco/dbfake.php';
 
 $usuario_id = $_SESSION['usuario_id'];
 $tarefas_usuario = array_filter($tarefas, function ($tarefa) use ($usuario_id) {
-  return $tarefa['responsavel'] == $usuario_id;
+  return $tarefa['usuario_id'] == $usuario_id;
 });
+
+function traduzStatus($status) {
+  switch ($status) {
+    case '0': return 'Pendente';
+    case '1': return 'Em Andamento';
+    case '2': return 'Concluída';
+    default: return 'Desconhecido';
+  }
+}
 ?>
 
 <main>
@@ -24,7 +34,7 @@ $tarefas_usuario = array_filter($tarefas, function ($tarefa) use ($usuario_id) {
       <h1>Dashboard</h1>
     </div>
     <div class="pull-right">
-      <a class="btn btn-secundary" href="tarefaNova.php">Adicionar Tarefa</a>
+      <a class="btn btn-secondary" href="./tarefaNova.php">Adicionar Tarefa</a>
     </div>
   </div>
 
@@ -34,10 +44,10 @@ $tarefas_usuario = array_filter($tarefas, function ($tarefa) use ($usuario_id) {
       <ul>
         <?php foreach ($tarefas_usuario as $tarefa): ?>
           <li>
-            <a href="tarefa.php?id=<?= urlencode($tarefa['id']) ?>">
+            <a href="./tarefa.php?id=<?= urlencode($tarefa['id']) ?>">
               <?= htmlspecialchars($tarefa['titulo']) ?>
             </a>
-            – <?= htmlspecialchars($tarefa['status']) ?>
+            – <?= traduzStatus($tarefa['status']) ?>
           </li>
         <?php endforeach; ?>
       </ul>
@@ -47,7 +57,6 @@ $tarefas_usuario = array_filter($tarefas, function ($tarefa) use ($usuario_id) {
       </div>
     <?php endif; ?>
   </div>
-
 </main>
 
 <?php

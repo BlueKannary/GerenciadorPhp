@@ -1,5 +1,5 @@
 <?php
-require_once 'db.php'; // Usa o sistema de cookie como banco de dados
+require_once __DIR__ . '/../Banco/dbfake.php';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $email = filter_input(INPUT_POST, 'email', FILTER_VALIDATE_EMAIL);
