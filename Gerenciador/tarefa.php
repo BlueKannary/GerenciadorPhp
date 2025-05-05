@@ -31,9 +31,9 @@ require_once 'Banco/dbfake.php'
                     <td><?php echo htmlspecialchars($tarefa['responsavel']); ?></td>
                     <td><?php echo htmlspecialchars($tarefa['status']); ?></td>
                     <td>
-                        <a href="tarefaComentarios.php?tarefa_id=<?php echo $tarefa['id']; ?>">Comentários</a> |
-                        <a href="tarefaEditar.php?tarefa_id=<?php echo $tarefa['id']; ?>">Editar</a> |
-                        <a href="tarefaExcluir.php?tarefa_id=<?php echo $tarefa['id']; ?>">Excluir</a>
+                        <button class="btn btn-primary" href="tarefaComentarios.php?tarefa_id=<?php echo $tarefa['id']; ?>">Comentários</button>
+                        <button class="btn btn-secundary" href="tarefaEditar.php?tarefa_id=<?php echo $tarefa['id']; ?>">Editar</button> 
+                        <button class="btn btn-error" href="tarefaExcluir.php?tarefa_id=<?php echo $tarefa['id']; ?>">Excluir</button>
                     </td>
                 </tr>
             <?php endforeach; ?>

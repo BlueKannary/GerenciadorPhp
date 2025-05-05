@@ -21,7 +21,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         'status' => $_POST['status'],
         'prioridade' => $_POST['prioridade'],
         'categoria' => $_POST['categoria'],
-        'usuario_id' => $_SESSION['usuario_id'] // mesmo nome usado no login
+        'usuario_id' => $_SESSION['usuario_id'] 
     ];
 
     $tarefas[] = $nova_tarefa;
@@ -36,7 +36,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 <main>
     <div class="containerHeader">
         <div class="pull-left">
-            <h1>Tarefa</h1>
+            <h1>Nova Tarefa</h1>
         </div>
         <div class="pull-right">
             <a class="btn btn-secundary" href="dashboard.php">Home</a>
@@ -44,8 +44,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         </div>
     </div>
     <div class="container">
-        <h2>Criar Nova Tarefa</h2>
-
         <div class="containerTarefa">
             <form action="tarefaNova.php" method="POST">
                 <div class="row">
@@ -58,7 +56,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                         <input type="text" id="responsavel" name="responsavel" required>
                     </div>
                 </div>
-
                 <div class="row">
                     <div class="col-12">
                         <label for="descricao">Descrição:</label>

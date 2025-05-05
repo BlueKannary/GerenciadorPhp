@@ -52,7 +52,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <main>
     <div class="containerHeader">
         <div class="pull-left">
-            <h1>Tarefa</h1>
+            <h1>Edição de Tarefa</h1>
         </div>
         <div class="pull-right">
             <a class="btn btn-secundary" href="dashboard.php">Home</a>
@@ -60,8 +60,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         </div>
     </div>
     <div class="container">
-
-        <h2>Nova Tarefa</h2>
 
         <?php if (isset($_SESSION['erro_tarefa'])): ?>
             <div class="alert alert-danger"><?php echo $_SESSION['erro_tarefa']; unset($_SESSION['erro_tarefa']); ?></div>

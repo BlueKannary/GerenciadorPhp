@@ -182,6 +182,7 @@ nav ul li a:hover {
 }
 .containerLog{
     background-color: #53a1b4;
+    color: #2c3e50;
     align-items: center;
     padding: 20px;
     border-radius: 8px;
@@ -190,7 +191,7 @@ nav ul li a:hover {
 .containerLog h1 {
     margin: 0;
     font-size: 22px;
-    color: #464984;
+    color: #181a4f;
 }
 
 /* Inputs e selects */
