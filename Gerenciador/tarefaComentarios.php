@@ -20,9 +20,17 @@ $comentarios_tarefa = array_filter($comentarios, function($comentario) use ($tar
     return $comentario['tarefa_id'] === $tarefa_id;
 });
 ?>
-
-<h2>Comentários da Tarefa</h2>
-
+<div class="containerHeader">
+    <div class="pull-left">
+        <h1>Comentários da Tarefa</h1>
+    </div>
+    <div class="pull-right">
+        <a class="btn btn-secundary" href="dashboard.php">Home</a>
+        <a class="btn btn-secundary" href="tarefas.php">Tarefas</a>
+    </div>
+</div>
+<div class="container">
+    
 <?php if (!empty($comentarios_tarefa)): ?>
     <ul>
         <?php foreach ($comentarios_tarefa as $comentario): ?>
@@ -33,8 +41,15 @@ $comentarios_tarefa = array_filter($comentarios, function($comentario) use ($tar
             </li>
         <?php endforeach; ?>
     </ul>
-<?php else: ?>
-    <p>Não há comentários para esta tarefa.</p>
+<?php else: ?><form action="tarefaComentarios.php?tarefa_id=<?php echo $tarefa_id; ?>" method="POST">
+        <div class="form-group">
+            <label for="comentario">Adicionar Comentário:</label>
+            <textarea id="comentario" name="comentario" rows="4" required></textarea>
+        </div>
+        <button type="submit" class="btn btn-sucess">Enviar</button>
+    </form>
 <?php endif; ?>
+
+</div>
 
 <?php require_once 'Comuns/footer.php'; ?>

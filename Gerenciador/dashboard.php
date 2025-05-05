@@ -24,7 +24,6 @@ $tarefas_usuario = array_filter($tarefas, function ($tarefa) use ($usuario_id) {
       <h1>Dashboard</h1>
     </div>
     <div class="pull-right">
-      <a class="btn btn-secundary" href="dashboard.php">Home</a>
       <a class="btn btn-secundary" href="tarefaNova.php">Adicionar Tarefa</a>
     </div>
   </div>
@@ -43,7 +42,9 @@ $tarefas_usuario = array_filter($tarefas, function ($tarefa) use ($usuario_id) {
         <?php endforeach; ?>
       </ul>
     <?php else: ?>
-      <p>Você ainda não possui tarefas.</p>
+      <div class="containerTarefa">
+        <p>Você ainda não possui tarefas.</p>
+      </div>
     <?php endif; ?>
   </div>
 
